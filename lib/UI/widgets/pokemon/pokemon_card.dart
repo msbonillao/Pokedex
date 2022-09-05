@@ -56,7 +56,7 @@ class _PokemonCardState extends State<PokemonCard> {
           child: Stack(
             children: [
               Hero(
-                tag: 'pokemon/${pokemon.id}/type/container}',
+                tag: 'pokemon/${pokemon.id}/type/container',
                 child: Container(
                   decoration: getBoxDecoration(pokemon.types),
                 ),
@@ -94,6 +94,7 @@ class _PokemonCardState extends State<PokemonCard> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Column(
@@ -108,29 +109,34 @@ class _PokemonCardState extends State<PokemonCard> {
                                   .toString()
                                   .capitalize(),
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
                         Text(
                           pokemon.species?.genera ?? '',
                           style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
-                                  .withOpacity(0.8),
-                              fontWeight: FontWeight.w300,
-                              fontSize: 12,
-                              height: 1.4),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.8),
+                            fontWeight: FontWeight.w300,
+                            fontSize: 11,
+                            height: 1.4,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         )
                       ],
                     ),
                   ),
+                  SizedBox(width: 2,),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children:
                         pokemon.types?.map(buildTypeContainer).toList() ?? [],
                   )

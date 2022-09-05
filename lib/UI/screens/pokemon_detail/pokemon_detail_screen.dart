@@ -36,7 +36,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
             child: Stack(
               children: [
                 Hero(
-                  tag: 'pokemon/${pokemon.id}/type/container}',
+                  tag: 'pokemon/${pokemon.id}/type/container',
                   child: Container(
                     decoration: getBoxDecoration(pokemon.types),
                   ),

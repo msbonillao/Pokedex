@@ -68,7 +68,9 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
   }
 
   Widget _buildPokemonTile(APIResource pokemon) {
-    return PokemonTile(bloc: DependencyInjector().getPokemonBloc(pokemon.id));
+    return PokemonTile(
+      bloc: DependencyInjector().getPokemonBloc(pokemon.id),
+    );
   }
 
   _buildHeader(Pokedex pokedex) {

@@ -8,8 +8,10 @@ class PokedexTheme {
       headline6: PokedexTexStyles.baseFont,
       bodyText1: PokedexTexStyles.baseFont.copyWith(
         fontWeight: FontWeight.w600,
+        overflow: TextOverflow.ellipsis,
       ),
       bodyText2: PokedexTexStyles.baseFont,
     ),
+
   );
 }

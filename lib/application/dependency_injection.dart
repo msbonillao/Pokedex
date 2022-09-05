@@ -81,11 +81,11 @@ class DependencyInjector {
 
   PokemonDetailBloc _buildPokemonBloc(String id) {
     final dependency = PokemonDetailBloc(
-        useCase: PokemonDetailUseCaseImpl(
-          repository: getPokemonRepository(),
-        ),
-        id: id)
-      ..initialize();
+      useCase: PokemonDetailUseCaseImpl(
+        repository: getPokemonRepository(),
+      ),
+      id: id,
+    )..initialize();
     return dependency;
   }
 
@@ -111,8 +111,9 @@ class DependencyInjector {
 
   ApplicationBloc _buildAppBloc() {
     final dependency = ApplicationIndexBloc(
-      useCase:IndexUseCaseImpl(pokedexRepository: _pokedexRepository, indexRepository: IndexDatabase(databaseManager))
-    );
+        useCase: IndexUseCaseImpl(
+            pokedexRepository: _pokedexRepository,
+            indexRepository: IndexDatabase(databaseManager)));
     _registerDependency(ApplicationBloc, dependency);
     return dependency;
   }

@@ -69,6 +69,7 @@ abstract class APIParsing {
 
   static PokemonSpecies speciesFromJson(Map<String, dynamic> data) {
     return PokemonSpecies(
+      id: data['id']!.toString(),
       baseHappiness: tryParseInt(data['base_happiness']),
       captureRate: tryParseInt(data['capture_rate']),
       flavorTexts: BaseParsing.parseList(

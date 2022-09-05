@@ -32,7 +32,12 @@ class PokemonRepositoryImpl implements PokemonRepository {
   }
 
   @override
-  Future<PokemonSpecies> fetchPokemonSpeciesByID(covariant Object id) {
-    return networkSource.fetchPokemonSpeciesByID(id);
+  Future<PokemonSpecies> fetchPokemonSpeciesByID(covariant Object id) async {
+    PokemonSpecies? species =  await localSource.fetchPokemonSpeciesByID(id);
+    if (species == null) {
+      species = await networkSource.fetchPokemonSpeciesByID(id);
+      localSource.savePokemonSpecies(species);
+    }
+    return species;
   }
 }
