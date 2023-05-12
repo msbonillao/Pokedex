@@ -27,7 +27,7 @@ class PokemonDatabaseImpl implements PokemonDatabase {
 
   Future<PokemonSpecies?> fetchPokemonSpeciesByID(covariant Object id) async {
     final species = await speciesStore.record(id.toString()).get(db.db);
-    return PokemonSpeciesDatabaseExtension.fromDatabase(species);
+    return PokemonSpeciesDatabaseExtension.fromDatabase(species as Map<String, dynamic>?);
   }
 
   Future<void> savePokemonSpecies(PokemonSpecies species) async {
